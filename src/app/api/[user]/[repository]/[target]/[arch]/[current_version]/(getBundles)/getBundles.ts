@@ -33,7 +33,7 @@ export default async function getBundlesForTarget({ target, repository, user, cu
     }
 }
 
-export async function getAllBundles({ targets, repository, user, current_version }: multipleTargetProps) {
+export async function getAllStandardBundles({ targets, repository, user, current_version }: multipleTargetProps) {
     try {
         const GIT_HUB_API = await axios.get(`https://api.github.com/repos/${user}/${repository}/releases/latest`, {headers:{
             Authorization: `Bearer ${process.env.ACCESS_TOKEN}`

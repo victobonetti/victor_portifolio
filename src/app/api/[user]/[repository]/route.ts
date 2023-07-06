@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getAllBundles } from "./[target]/[arch]/[current_version]/(getBundles)/getBundles";
+import { getAllStandardBundles } from "./[target]/[arch]/[current_version]/(getBundles)/getBundles";
 
 export async function GET(req: Request, { params }: { params: { user: string, repository: string } }) {
     let params_user = params.user;
@@ -9,7 +9,7 @@ export async function GET(req: Request, { params }: { params: { user: string, re
 
     const targets = ['windows', 'linux', 'darwin'];
 
-    let bundles = await getAllBundles({ targets: targets, repository: params_repository, user: params_user, current_version: '' });
+    let bundles = await getAllStandardBundles({ targets: targets, repository: params_repository, user: params_user, current_version: '' });
 
     return NextResponse.json({
         version: bundles[0].version,
