@@ -27,26 +27,26 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${darkmode ? "dark" : ""} ${inter.className}`}>
-        <main className="  overflow-x-hidden flex justify-center w-screen h-fit min-h-screen bg-slate-50 text-slate-900 dark:bg-gray-800 dark:text-gray-100">
+        <main className="  overflow-x-hidden flex justify-center w-screen h-fit min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
           <div className="absolute z-20 top-6 right-8">
             <FontAwesomeIcon
               onClick={() => setDarkmode(!darkmode)}
-              className="cursor-pointer dark:text-gray-100 text-slate-900 h-6"
+              className="cursor-pointer dark:text-slate-100 text-slate-900 h-6"
               icon={darkmode ? faSun : faMoon}
             />
           </div>
           <div className="h-screen w-screen flex flex-col lg:flex-row">
-            <aside className="bg-slate-50 text-slate-900 dark:bg-gray-800 dark:text-gray-100 absolute pb-4 w-screen flex flex-col lg:pl-6 lg:w-52 lg:h-full lg:left-0 justify-between pt-6">
+            <aside className="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 absolute pb-4 w-screen flex flex-col lg:pl-6 lg:w-52 lg:h-full lg:left-0 justify-between pt-6">
               <div>
                 <span className="flex flex-col w-full items-center lg:items-start select-none">
                   <div className="text-center lg:text-start">
-                    <h1 className="font-bold text-2xl dark:text-gray-100 text-slate-900">Portifólio</h1>
-                    <p className="text-xs dark:text-gray-300 text-slate-700">By Víctor Bonetti Pegoraro</p>
+                    <h1 className="font-bold text-2xl dark:text-slate-100 text-slate-900">Portifólio</h1>
+                    <p className="text-xs dark:text-slate-300 text-slate-700">By Víctor Bonetti Pegoraro</p>
                   </div>
                 </span>
                 <nav className="mt-1 w-full justify-evenly flex lg:flex-col">
-                  <Link href={"/"}><button className={` ${pathname == '/' ? " font-semibold text-slate-900 dark:text-gray-100 " : " dark:text-gray-300 text-slate-700 "} hover:underline self-start lg:mt-3 mt-1 lg:ml-1`}>Projetos</button></Link>
-                  <Link href={"/sobre"}><button className={` ${pathname == '/sobre' ? " font-semibold text-slate-900 dark:text-gray-100" : " dark:text-gray-300 text-slate-700 "} hover:underline  self-start mt-1 lg:ml-1`}>Sobre mim</button></Link>
+                  <Link href={"/"}><button className={` ${pathname == '/' ? " font-semibold text-slate-900 dark:text-slate-100 " : " dark:text-slate-300 text-slate-700 "} hover:underline self-start lg:mt-3 mt-1 lg:ml-1`}>Projetos</button></Link>
+                  <Link href={"/sobre"}><button className={` ${pathname == '/sobre' ? " font-semibold text-slate-900 dark:text-slate-100" : " dark:text-slate-300 text-slate-700 "} hover:underline  self-start mt-1 lg:ml-1`}>Sobre mim</button></Link>
                 </nav>
               </div>
             </aside>

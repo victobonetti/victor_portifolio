@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import getBundlesForTarget, { getAllBundles } from "./[target]/[arch]/[current_version]/(getBundles)/getBundles";
+import { getAllBundles } from "./[target]/[arch]/[current_version]/(getBundles)/getBundles";
 
 export async function GET(req: Request, { params }: { params: { user: string, repository: string } }) {
     let params_user = params.user;
@@ -9,20 +9,13 @@ export async function GET(req: Request, { params }: { params: { user: string, re
 
     const targets = ['windows', 'linux', 'darwin'];
 
-    let windows = await getAllBundles(targets[0], params_repository, params_user, '');
-    
-    if (windows && linux && macos) {
-        console.log({
-            windows: windows.standard_bundle,
-            linux: linux.standard_bundle,
-            macos: macos.standard_bundle
-        })
+    let bundles = await getAllBundles({ targets: targets, repository: params_repository, user: params_user, current_version: '' });
 
-        return NextResponse.json({
-            windows: windows.standard_bundle,
-            linux: linux.standard_bundle,
-            macos: macos.standard_bundle
-        })
-    }
-
+    return NextResponse.json({
+        version: bundles[0].version,
+        windows: bundles[0].standard_bundle,
+        linux: bundles[1].standard_bundle,
+        darwin: bundles[2].standard_bundle
+    })
 }
+

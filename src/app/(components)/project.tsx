@@ -22,9 +22,10 @@ interface portifolioProps {
 }
 
 interface standardDownloadResponseProps {
+    version: string,
     windows: string,
     linux: string,
-    macos: string
+    darwin: string
 }
 
 
@@ -35,15 +36,16 @@ export default function PortifolioProject(props: portifolioProps) {
     const fetch = async () => {
         const URL = `${window.location.protocol}//${window.location.host}`
         axios.get(`${URL}/api/${props.repositoryOwnerName}/${props.repositoryName}/`).then((data) => {
+            console.log(data.data)
             setDownloadData(data.data)
         }).catch(e => {
-            console.log(e)
+            console.log("Erro:" + e)
         })
     }
 
     useEffect(() => {
-        fetch();
-    }, )
+        fetch()
+    })
 
     return (
         <Container>
@@ -55,7 +57,7 @@ export default function PortifolioProject(props: portifolioProps) {
                             <p className="ml-0.5 text-sm dark:text-slate-400 text-slate-500">{props.projectType}</p>
                             <h3 className="font-semibold text-4xl">{props.projectTitle}</h3>
                         </div>
-                        <p className="h-fit px-2 py-1 dark:bg-slate-200 dark:text-slate-700 bg-slate-600 text-slate-100 rounded-xl text-sm">v1.0.0</p>
+                        <p className="h-fit px-2 py-1 dark:bg-slate-200 dark:text-slate-700 bg-slate-600 text-slate-100 rounded-xl text-sm">{downloadData?.version}</p>
                     </div>
 
                     <p className="px-1 text-justify dark:text-slate-400 text-slate-500">Elaborado com &nbsp;
@@ -86,13 +88,14 @@ export default function PortifolioProject(props: portifolioProps) {
                     <div className="h-full flex w-full items-end justify-between">
                         <Link target='blank' href={`https://github.com/${props.repositoryOwnerName}/${props.repositoryName}/`}><FontAwesomeIcon className="h-10 opacity-90 hover:opacity-100 cursor-pointer" icon={faGithub} /></Link>
                         {downloadData &&
+
                             <details className=" cursor-pointer dropdown">
-                                <summary className=" btn dark:bg-slate-300 dark:text-slate-800 text-slate-100 bg-slate-800 hover:bg-slate-900 focus:outline-none font-medium text-sm px-5 py-2.5">Downloads</summary>
+                                <summary className=" btn dark:bg-slate-300 dark:text-slate-800 text-slate-100 bg-slate-900 hover:bg-slate-900 focus:outline-none font-medium text-sm px-5 py-2.5">Downloads</summary>
 
                                 <ul className="  bg-slate-50 absolute shadow menu dropdown-content z-[1] rounded-box w-36">
-                                    <Link href={downloadData?.windows}><li className="flex items-center p-1 hover:bg-slate-200"><span><FontAwesomeIcon className="text-slate-600 h-6 mr-2" icon={faDownload} /></span><p className="text-slate-700">Windows</p></li></Link>
-                                    <Link href={downloadData?.macos}><li className="flex items-center p-1 hover:bg-slate-200"><span><FontAwesomeIcon className="text-slate-600 h-6 mr-2" icon={faDownload} /></span><p className="text-slate-700">MacOs</p>  </li></Link>
-                                    <Link href={downloadData?.linux}><li className="flex items-center p-1 hover:bg-slate-200"><span><FontAwesomeIcon className="text-slate-600 h-6 mr-2" icon={faDownload} /></span><p className="text-slate-700">Linux</p>  </li></Link>
+                                    <Link href={String(downloadData?.windows)}><li className="flex items-center p-1 hover:bg-slate-200"><span><FontAwesomeIcon className="text-slate-600 h-6 mr-2" icon={faDownload} /></span><p className="text-slate-700">Windows</p></li></Link>
+                                    <Link href={String(downloadData?.darwin)}><li className="flex items-center p-1 hover:bg-slate-200"><span><FontAwesomeIcon className="text-slate-600 h-6 mr-2" icon={faDownload} /></span><p className="text-slate-700">MacOs</p>  </li></Link>
+                                    <Link href={String(downloadData?.linux)}><li className="flex items-center p-1 hover:bg-slate-200"><span><FontAwesomeIcon className="text-slate-600 h-6 mr-2" icon={faDownload} /></span><p className="text-slate-700">Linux</p>  </li></Link>
                                 </ul>
 
                             </details>
