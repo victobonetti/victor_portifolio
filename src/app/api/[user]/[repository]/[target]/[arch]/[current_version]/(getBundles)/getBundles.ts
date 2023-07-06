@@ -1,25 +1,50 @@
 import axios from "axios";
 import Bundle from "./bundleClass";
 
-export default async function getBundlesForTarget(target: string, repository: string, user: string, current_version: string): Promise<Bundle | void> {
+type GitHubAPIResponse = {
+    data: {
+        assets: any[]; // Tipo dos assets a ser definido
+        name: string;
+        body: string;
+    };
+};
+
+type targetProps = {
+    target: string, repository: string, user: string, current_version: string
+}
+
+type multipleTargetProps = {
+    targets: string[], repository: string, user: string, current_version: string
+}
+
+export default async function getBundlesForTarget({ target, repository, user, current_version }: targetProps): Promise<Bundle | void> {
 
     if (target == 'windows' || target == 'darwin' || target == 'linux') {
         let bundle = new Bundle(target, repository, user);
-        return await getBundleData(bundle);
+        let GIT_HUB_API = await axios.get(`https://api.github.com/repos/${user}/${repository}/releases/latest`)
+        return getBundleData(bundle, GIT_HUB_API);
     } else {
         return;
     }
 }
 
-async function getBundleData(bundle: Bundle) {
+export async function getAllBundles({ targets, repository, user, current_version }: multipleTargetProps) {
+    let GIT_HUB_API = await axios.get(`https://api.github.com/repos/${user}/${repository}/releases/latest`)
+    let bundles: Bundle[] = [];
+    targets.map((target) => {
+        let data = getBundleData(new Bundle(target, repository, user), GIT_HUB_API);
+        if (data) {
+            bundles.push(data);
+        }
+    })
+    return bundles;
+}
 
-    let GIT_HUB_API = await axios.get(`https://api.github.com/repos/${bundle.user_name}/${bundle.repository_name}/releases/latest`)
+function getBundleData(bundle: Bundle, GIT_HUB_API: GitHubAPIResponse):Bundle | undefined {
 
     let assets = GIT_HUB_API.data.assets;
     bundle.version = GIT_HUB_API.data.name;
     bundle.notes = GIT_HUB_API.data.body;
-
-
 
     //extract bundles from the github api.
     assets.map((asset: { name: string, browser_download_url: string }) => {
@@ -37,7 +62,7 @@ async function getBundleData(bundle: Bundle) {
                 }
             }
         }
- 
+
 
         //LINUX
         if (bundle.name == 'linux') {
@@ -72,10 +97,6 @@ async function getBundleData(bundle: Bundle) {
         }
     })
 
-    if (bundle.signature) {
-        bundle.signature = (await axios.get(bundle.signature)).data;
-        return bundle;
-    }
-
-    return;
+    return bundle;
 }
+

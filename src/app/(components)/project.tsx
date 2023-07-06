@@ -34,8 +34,8 @@ export default function PortifolioProject(props: portifolioProps) {
 
     const fetch = async () => {
         const URL = `${window.location.protocol}//${window.location.host}`
-        let data = axios.get(`${URL}/api/${props.repositoryOwnerName}/${props.repositoryName}/`).then((data) => {
-            console.log(data)
+        axios.get(`${URL}/api/${props.repositoryOwnerName}/${props.repositoryName}/`).then((data) => {
+            setDownloadData(data.data)
         }).catch(e => {
             console.log(e)
         })
