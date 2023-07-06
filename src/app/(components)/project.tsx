@@ -1,5 +1,3 @@
-'use client'
-
 import Image, { StaticImageData } from 'next/image';
 import Container from './container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -30,30 +28,27 @@ interface standardDownloadResponseProps {
 }
 
 
-export default function PortifolioProject(props: portifolioProps) {
-
-    const [downloadData, setDownloadData] = useState<standardDownloadResponseProps>();
+export default async function PortifolioProject(props: portifolioProps) {
 
     const fetch = async () => {
-        const URL = `${window.location.protocol}//${window.location.host}`
-        axios.get(`${URL}/api/${props.repositoryOwnerName}/${props.repositoryName}/`).then((data) => {
-            console.log(data.data)
-            setDownloadData(data.data)
-        }).catch(e => {
-            console.log("Erro:" + e)
-        })
+        // const URL = `${window.location.protocol}//${window.location.host}`
+        try {
+            let data = await axios.get(`http://localhost:3000/api/${props.repositoryOwnerName}/${props.repositoryName}/`);
+            return data.data
+        } catch (e){
+            return undefined;
+        }
+        
     }
 
-    useEffect(() => {
-        fetch()
-    },[])
+    let downloadData: standardDownloadResponseProps = await fetch();
+
 
     return (
         <Container>
-            {!downloadData && <FontAwesomeIcon className=' h-16 animate-pulse' icon={faCoffee} />}
             {downloadData &&
                 <div className=" flex flex-col lg:flex-row mx-8 lg:mx-28">
-                    <Image className="rounded object-cover lg:w-1/2 w-full mb-4 lg:mb-0" src={props.projectImage} alt="Plano de fundo" />
+                    <Image className="rounded object-cover object-left-top w-1/2 mb-4 lg:mb-0" src={props.projectImage} alt="Plano de fundo" />
                     <div className=" flex flex-col lg:ml-4 lg:w-96 w-full text-sm dark:text-slate-300">
                         <div className="flex justify-between ">
                             <div>
@@ -92,15 +87,13 @@ export default function PortifolioProject(props: portifolioProps) {
                             <Link target='blank' href={`https://github.com/${props.repositoryOwnerName}/${props.repositoryName}/`}><FontAwesomeIcon className="h-10 opacity-90 hover:opacity-100 cursor-pointer" icon={faGithub} /></Link>
                             {downloadData &&
 
-                                <details className=" cursor-pointer dropdown">
+                                <details className="  mt-8 lg:mt-0 cursor-pointer ">
                                     <summary className=" btn dark:bg-slate-300 dark:text-slate-800 text-slate-100 bg-slate-900 hover:bg-slate-900 focus:outline-none font-medium text-sm px-5 py-2.5">Downloads</summary>
-
-                                    <ul className="  bg-slate-50 absolute shadow menu dropdown-content z-[1] rounded-box w-36">
+                                    <ul className=" bg-slate-50 lg:absolute z-20 shadow rounded-box w-36">
                                         <Link href={String(downloadData?.windows)}><li className="flex items-center p-1 hover:bg-slate-200"><span><FontAwesomeIcon className="text-slate-600 h-6 mr-2" icon={faDownload} /></span><p className="text-slate-700">Windows</p></li></Link>
                                         <Link href={String(downloadData?.darwin)}><li className="flex items-center p-1 hover:bg-slate-200"><span><FontAwesomeIcon className="text-slate-600 h-6 mr-2" icon={faDownload} /></span><p className="text-slate-700">MacOs</p>  </li></Link>
                                         <Link href={String(downloadData?.linux)}><li className="flex items-center p-1 hover:bg-slate-200"><span><FontAwesomeIcon className="text-slate-600 h-6 mr-2" icon={faDownload} /></span><p className="text-slate-700">Linux</p>  </li></Link>
                                     </ul>
-
                                 </details>
                             }
                         </div>

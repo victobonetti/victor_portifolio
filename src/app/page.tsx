@@ -1,5 +1,5 @@
 import Image from "next/image";
-import bg from '../../public/bg.jpg'
+import frilahub from '../../public/frilaHub_photo.png'
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
 import { faDownload } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -12,7 +12,7 @@ import PortifolioProject from "./(components)/project";
 export default function Home() {
 
   return (
-    <PortifolioProject projectImage={bg}
+    <PortifolioProject projectImage={frilahub}
       projectType={"Aplicativo desktop"}
       projectTitle={"FrilaHub"}
       stackList={['rust', 'typescript', 'react', 'sqlite']}
