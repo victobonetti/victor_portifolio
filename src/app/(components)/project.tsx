@@ -33,7 +33,7 @@ export default async function PortifolioProject(props: portifolioProps) {
     const fetch = async () => {
         // const URL = `${window.location.protocol}//${window.location.host}`
         try {
-            let data = await axios.get(`https://portifolio-victor-dev.netlify.app/api/${props.repositoryOwnerName}/${props.repositoryName}/`);
+            let data = await axios.get(`https://victor-portifolio.vercel.app/api/${props.repositoryOwnerName}/${props.repositoryName}/`);
             return data.data
         } catch (e){
             return undefined;
@@ -100,6 +100,6 @@ export default async function PortifolioProject(props: portifolioProps) {
                     </div>
                 </div>
             }
-        </Container >
+        </Container>
     )
 }
