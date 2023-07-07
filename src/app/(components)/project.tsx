@@ -33,9 +33,12 @@ export default async function PortifolioProject(props: portifolioProps) {
     const fetch = async () => {
         // const URL = `${window.location.protocol}//${window.location.host}`
         try {
+            console.log("Fetching data...")
             let data = await axios.get(`https://victor-portifolio.vercel.app/api/${props.repositoryOwnerName}/${props.repositoryName}/`);
+            console.log(data);
             return data.data
         } catch (e){
+            console.error("Error fetching data.")
             return undefined;
         }
         
