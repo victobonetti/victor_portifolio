@@ -6,7 +6,7 @@ interface CardProps {
 
 const Container = ({ children }: CardProps) => {
     return (
-        <div className="  flex justify-center dark:text-slate-300 text-slate-800 h-fit lg:h-96 w-full mx-4 mb-32">
+        <div className="  flex justify-center dark:text-slate-300 text-slate-800 h-fit mx-6 w-screen mb-8">
             {children}
         </div>
     );
