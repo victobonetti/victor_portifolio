@@ -22,7 +22,11 @@ export default async function getBundlesForTarget({ target, repository, user, cu
     try {
         if (target === 'windows' || target === 'darwin' || target === 'linux') {
             const bundle = new Bundle(target, repository, user);
-            const GIT_HUB_API = await axios.get(`https://api.github.com/repos/${user}/${repository}/releases/latest`);
+            const GIT_HUB_API = await axios.get(`https://api.github.com/repos/${user}/${repository}/releases/latest`, {
+                headers: {
+                    Authorization: `Bearer ${process.env.ACCESS_TOKEN}`
+                }
+            });
             return getBundleData(bundle, GIT_HUB_API);
         } else {
             return;
@@ -35,9 +39,11 @@ export default async function getBundlesForTarget({ target, repository, user, cu
 
 export async function getAllStandardBundles({ targets, repository, user, current_version }: multipleTargetProps) {
     try {
-        const GIT_HUB_API = await axios.get(`https://api.github.com/repos/${user}/${repository}/releases/latest`, {headers:{
-            Authorization: `Bearer ${process.env.ACCESS_TOKEN}`
-        }});
+        const GIT_HUB_API = await axios.get(`https://api.github.com/repos/${user}/${repository}/releases/latest`, {
+            headers: {
+                Authorization: `Bearer ${process.env.ACCESS_TOKEN}`
+            }
+        });
         const bundles: Bundle[] = [];
         targets.forEach((target) => {
             const data = getBundleData(new Bundle(target, repository, user), GIT_HUB_API);

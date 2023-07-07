@@ -9,14 +9,14 @@ export async function GET(req: Request, { params }: { params: { user: string, re
 
     const targets = ['windows', 'linux', 'darwin'];
 
-    // let bundles = await getAllStandardBundles({ targets: targets, repository: params_repository, user: params_user, current_version: '' });
+    let bundles = await getAllStandardBundles({ targets: targets, repository: params_repository, user: params_user, current_version: '' });
 
-    // return NextResponse.json({
-    //     version: bundles[0].version,
-    //     windows: bundles[0].standard_bundle,
-    //     linux: bundles[1].standard_bundle,
-    //     darwin: bundles[2].standard_bundle
-    // })
+    return NextResponse.json({
+        version: bundles[0].version,
+        windows: bundles[0].standard_bundle,
+        linux: bundles[1].standard_bundle,
+        darwin: bundles[2].standard_bundle
+    })
 
     return NextResponse.json({
         teste: "Teste!"
