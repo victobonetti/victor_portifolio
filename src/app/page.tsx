@@ -8,11 +8,11 @@ export default function Home() {
     <>
       <PortifolioProject projectImage={frilahub}
         projectType={"Aplicativo desktop"}
-        projectTitle={"FrilaHub"}
+        projectTitle={"PassaRégua"}
         stackList={['Rust', 'Typescript', 'React', 'Sqlite']}
-        projectResume={"Aplicativo para gestão de freelancers de restaurante e consumo local de funcionários."}
-        listInfos={['Cadastre produtos e funcionários, abra contas fiado e faça pagamentos para reduzir saldos pendentes',
-          'Gere relatórios de consumo mensal dos funcionários e gasto com freelancers']}
+        projectResume={"Aplicativo para gestão de contas fiado."}
+        listInfos={['Cadastre produtos e pessoas, abra contas fiado e faça pagamentos para reduzir saldos pendentes'
+        ]}
         repository={{ repositoryName: `PassaRegua`, repositoryOwnerName: `victobonetti` }}
         haveDownload={true} />
 
