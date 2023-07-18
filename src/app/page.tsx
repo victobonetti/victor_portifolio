@@ -13,7 +13,7 @@ export default function Home() {
         projectResume={"Aplicativo para gestão de freelancers de restaurante e consumo local de funcionários."}
         listInfos={['Cadastre produtos e funcionários, abra contas fiado e faça pagamentos para reduzir saldos pendentes',
           'Gere relatórios de consumo mensal dos funcionários e gasto com freelancers']}
-        repository={{ repositoryName: `FrilaHub`, repositoryOwnerName: `victobonetti` }}
+        repository={{ repositoryName: `PassaRegua`, repositoryOwnerName: `victobonetti` }}
         haveDownload={true} />
 
       <PortifolioProject projectImage={bellaPizzaria}
