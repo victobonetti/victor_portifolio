@@ -3,7 +3,7 @@ export default class Bundle {
     repository_name: string;
     user_name: string;
     standard_bundle?: string;
-    updater_bundle?: string;
+    url?: string;
     signature?: string;
     version?: string;
     notes?: string;
@@ -15,7 +15,7 @@ export default class Bundle {
     }
 
     validData(): boolean {
-        if (this.updater_bundle && this.signature && this.version) {
+        if (this.url && this.signature && this.version) {
             return true;
         } else {
             return false;

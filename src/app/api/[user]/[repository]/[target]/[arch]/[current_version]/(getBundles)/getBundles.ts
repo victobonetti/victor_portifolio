@@ -74,7 +74,7 @@ function getBundleData(bundle: Bundle, GIT_HUB_API: GitHubAPIResponse): Bundle |
                     if (asset.name.includes('.sig')) {
                         bundle.signature = asset.browser_download_url;
                     } else {
-                        bundle.updater_bundle = asset.browser_download_url;
+                        bundle.url = asset.browser_download_url;
                     }
                 }
             }
@@ -89,7 +89,7 @@ function getBundleData(bundle: Bundle, GIT_HUB_API: GitHubAPIResponse): Bundle |
                         if (asset.name.includes('.sig')) {
                             bundle.signature = asset.browser_download_url;
                         } else {
-                            bundle.updater_bundle = asset.browser_download_url;
+                            bundle.url = asset.browser_download_url;
                         }
                     }
                 }
@@ -103,7 +103,7 @@ function getBundleData(bundle: Bundle, GIT_HUB_API: GitHubAPIResponse): Bundle |
                         if (asset.name.includes('.sig')) {
                             bundle.signature = asset.browser_download_url;
                         } else {
-                            bundle.updater_bundle = asset.browser_download_url;
+                            bundle.url = asset.browser_download_url;
                         }
                     } 
                 } 

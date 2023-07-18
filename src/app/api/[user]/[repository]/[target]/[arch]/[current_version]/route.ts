@@ -12,9 +12,12 @@ export async function GET(req: Request, { params }: { params: { user: string, re
 
     let res_bundle = await getBundlesForTarget({target :params_target, repository: params_repository, user: params_user, current_version: params_current_version});
 
-    if (res_bundle && res_bundle.signature && res_bundle.updater_bundle) {
+    if (res_bundle && res_bundle.signature && res_bundle.url) {
         return NextResponse.json({
-            ...res_bundle
+           version: res_bundle.version,
+           url: res_bundle.url,
+           signature: res_bundle.signature,
+           notes: res_bundle.notes
         })
     } else {
         return NextResponse.json({})
