@@ -5,10 +5,10 @@ export default class Bundle {
     standard_bundle?: string;
     updater_bundle?: string;
     signature?: string;
-    version?:string;
-    notes?:string;
+    version?: string;
+    notes?: string;
 
-    constructor(name: string, repository_name:string, user_name:string) {
+    constructor(name: string, repository_name: string, user_name: string) {
         this.name = name;
         this.repository_name = repository_name;
         this.user_name = user_name;

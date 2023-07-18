@@ -11,7 +11,7 @@ export async function GET(req: Request, { params }: { params: { user: string, re
 
     let bundles = await getAllStandardBundles({ targets: targets, repository: params_repository, user: params_user, current_version: '' });
 
-    return NextResponse.json({
+    console.log({
         version: bundles[0].version,
         windows: bundles[0].standard_bundle,
         linux: bundles[1].standard_bundle,
@@ -19,7 +19,10 @@ export async function GET(req: Request, { params }: { params: { user: string, re
     })
 
     return NextResponse.json({
-        teste: "Teste!"
+        version: bundles[0].version,
+        windows: bundles[0].standard_bundle,
+        linux: bundles[1].standard_bundle,
+        darwin: bundles[2].standard_bundle
     })
 }
 

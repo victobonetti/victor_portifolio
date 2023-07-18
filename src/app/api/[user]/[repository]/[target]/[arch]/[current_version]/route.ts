@@ -14,7 +14,7 @@ export async function GET(req: Request, { params }: { params: { user: string, re
 
     if (res_bundle && res_bundle.signature && res_bundle.updater_bundle) {
         return NextResponse.json({
-            res_bundle
+            ...res_bundle
         })
     } else {
         return NextResponse.json({})

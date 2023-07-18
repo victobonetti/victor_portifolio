@@ -97,16 +97,19 @@ function getBundleData(bundle: Bundle, GIT_HUB_API: GitHubAPIResponse): Bundle |
 
             // WINDOWS
             if (bundle.name === 'windows') {
+
                 if (asset.name.includes('msi')) {
                     if (asset.name.includes('.zip')) {
-                        if (asset.name.includes('.zip.sig')) {
+                        if (asset.name.includes('.sig')) {
                             bundle.signature = asset.browser_download_url;
                         } else {
                             bundle.updater_bundle = asset.browser_download_url;
                         }
-                    } else {
-                        bundle.standard_bundle = asset.browser_download_url;
-                    }
+                    } 
+                } 
+
+                if (asset.name.includes('exe')) {
+                    bundle.standard_bundle = asset.browser_download_url;
                 }
             }
         });
