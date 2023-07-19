@@ -53,7 +53,6 @@ export default async function PortifolioProject(props: portifolioProps) {
 
     let downloadData: standardDownloadResponseProps = await fetch();
 
-
     return (
         <Container>
             <div className=" md:w-11/12 w-full border border-slate-300 dark:border-slate-600 rounded shadow-inner dark:bg-slate-800 bg-slate-100 flex flex-col md:flex-row ">

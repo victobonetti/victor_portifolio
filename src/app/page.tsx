@@ -1,3 +1,5 @@
+'use client'
+
 import bellaPizzaria from '../../public/bellaPizzaria_photo.png'
 import pr from '../../public/passaregua.png'
 import PortifolioProject from "./(components)/project";
