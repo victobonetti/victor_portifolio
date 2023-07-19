@@ -56,9 +56,9 @@ export default async function PortifolioProject(props: portifolioProps) {
 
     return (
         <Container>
-            <div className=" lg:w-fit w-full border border-slate-300 rounded shadow-inner bg-slate-100 p-2 flex flex-col lg:flex-row ">
-                <Image className="opacity-90 rounded object-cover object-left-top w-full h-48 lg:h-96 lg:w-96 mb-4 lg:mb-0" src={props.projectImage} alt="Plano de fundo" />
-                <div className=" flex flex-col lg:ml-4 lg:w-96 w-full text-sm dark:text-slate-300">
+            <div className=" md:w-11/12 w-full border border-slate-300 rounded shadow-inner bg-slate-100 p-2 flex flex-col md:flex-row ">
+                <Image className="opacity-90 rounded object-cover object-left-top w-full h-48 md:h-96 md:w-1/2 mb-4 md:mb-0" src={props.projectImage} alt="Plano de fundo" />
+                <div className=" flex flex-col md:ml-4 md:w-1/2 w-full text-sm dark:text-slate-300">
                     <div className="flex justify-between ">
                         <div>
                             <p className="ml-0.5 text-sm dark:text-slate-400 text-slate-500">{props.projectType}</p>
@@ -104,7 +104,7 @@ export default async function PortifolioProject(props: portifolioProps) {
                             </div>
                         }
                         {downloadData &&
-                            <details className="  mt-8 lg:mt-0 cursor-pointer ">
+                            <details className="  mt-8 md:mt-0 cursor-pointer ">
                                 <summary className=" btn dark:bg-slate-300 dark:text-slate-800 text-slate-100 bg-slate-900 hover:bg-slate-950 focus:outline-none font-medium text-sm px-5 py-2.5">Downloads</summary>
                                 <ul className="  bg-slate-50 z-30 shadow rounded-box w-36">
                                     <Link href={String(downloadData?.windows)}><li className="flex items-center p-1 hover:bg-slate-200"><span><FontAwesomeIcon className="text-slate-600 h-6 mr-2" icon={faDownload} /></span><p className="text-slate-700">Windows</p></li></Link>
