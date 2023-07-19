@@ -98,7 +98,7 @@ function getBundleData(bundle: Bundle, GIT_HUB_API: GitHubAPIResponse): Bundle |
             // WINDOWS
             if (bundle.name === 'windows') {
 
-                if (asset.name.includes('msi')) {
+                if (asset.name.includes('nsis')) {
                     if (asset.name.includes('.zip')) {
                         if (asset.name.includes('.sig')) {
                             bundle.signature = asset.browser_download_url;
