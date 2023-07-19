@@ -56,9 +56,9 @@ export default async function PortifolioProject(props: portifolioProps) {
 
     return (
         <Container>
-            <div className=" md:w-11/12 w-full border border-slate-300 rounded shadow-inner bg-slate-100 p-2 flex flex-col md:flex-row ">
-                <Image className="opacity-90 rounded object-cover object-left-top w-full h-48 md:h-96 md:w-1/2 mb-4 md:mb-0" src={props.projectImage} alt="Plano de fundo" />
-                <div className=" flex flex-col md:ml-4 md:w-1/2 w-full text-sm dark:text-slate-300">
+            <div className=" md:w-11/12 w-full border border-slate-300 dark:border-slate-600 rounded shadow-inner dark:bg-slate-800 bg-slate-100 flex flex-col md:flex-row ">
+                <Image className=" rounded opacity-90 object-cover object-left-top w-full h-48 md:h-96 md:w-1/2 mb-4 md:mb-0" src={props.projectImage} alt="Plano de fundo" />
+                <div className=" p-2 flex flex-col md:ml-4 md:w-1/2 w-full text-sm dark:text-slate-300">
                     <div className="flex justify-between ">
                         <div>
                             <p className="ml-0.5 text-sm dark:text-slate-400 text-slate-500">{props.projectType}</p>
@@ -90,7 +90,7 @@ export default async function PortifolioProject(props: portifolioProps) {
                         })}
                     </p>
 
-                    <p className="pb-4 border-b px-1 mt-4 text-justify">{props.projectResume}</p>
+                    <p className="pb-4 border-b dark:border-b-slate-600 px-1 mt-4 text-justify">{props.projectResume}</p>
                     <ul className="list-disc pl-5 pt-4">
                         {props.listInfos.map((info, i) => <li key={i} className="list-item mb-2">{info}</li>)}
                     </ul>
@@ -100,7 +100,7 @@ export default async function PortifolioProject(props: portifolioProps) {
                         }
                         {props.acessLink &&
                             <div className=' mt-8 w-full flex justify-end'>
-                                <Link target='blank' href={props.acessLink}><button className=' dark:bg-blue-300 dark:text-blue-800 text-blue-50 bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium text-sm px-5 py-2.5'>Acessar</button></Link>
+                                <Link target='blank' href={props.acessLink}><button className=' dark:bg-blue-300 dark:text-blue-800 dark:hover:bg-blue-400 text-blue-50 bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium text-sm px-5 py-2.5'>Acessar</button></Link>
                             </div>
                         }
                         {downloadData &&

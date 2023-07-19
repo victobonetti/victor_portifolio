@@ -1,12 +1,12 @@
 import bellaPizzaria from '../../public/bellaPizzaria_photo.png'
-import frilahub from '../../public/frilaHub_photo.png'
+import pr from '../../public/passaregua.png'
 import PortifolioProject from "./(components)/project";
 
 export default function Home() {
 
   return (
     <>
-      <PortifolioProject projectImage={frilahub}
+      <PortifolioProject projectImage={pr}
         projectType={"Aplicativo desktop"}
         projectTitle={"PassaRégua"}
         stackList={['Rust', 'Typescript', 'React', 'Sqlite']}
