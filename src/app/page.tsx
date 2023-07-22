@@ -16,7 +16,9 @@ export default function Home() {
         listInfos={['Cadastre produtos e pessoas, abra contas fiado e faça pagamentos para reduzir saldos pendentes'
         ]}
         repository={{ repositoryName: `PassaRegua`, repositoryOwnerName: `victobonetti` }}
-        haveDownload={true} />
+        haveDownload={true}
+        youtubelink='youtube.com'
+        />
 
       <PortifolioProject projectImage={bellaPizzaria}
         projectType={"Site"}

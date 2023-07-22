@@ -1,7 +1,7 @@
 import Image, { StaticImageData } from 'next/image';
 import Container from './container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
@@ -18,6 +18,7 @@ interface portifolioProps {
     listInfos: string[],   // ['Cadastre produtos e funcionários, abra contas fiado e faça pagamentos para reduzir saldos pendentes' , 'Gere relatórios de consumo mensal dos funcionários e gasto com freelancers']
     haveDownload: boolean,
     acessLink?: string
+    youtubelink?: string
 }
 
 interface gitHubProps {
@@ -92,16 +93,22 @@ export default async function PortifolioProject(props: portifolioProps) {
                     <p className="pb-4 border-b dark:border-b-slate-600 px-1 mt-4 text-justify">{props.projectResume}</p>
                     <ul className="list-disc pl-5 pt-4">
                         {props.listInfos.map((info, i) => <li key={i} className="list-item mb-2">{info}</li>)}
+                        {
+                            props.youtubelink && 
+                            <Link target='blank' href={props.youtubelink}><button className=' dark:bg-red-500  dark:hover:bg-red-400 text-red-50 bg-red-700 hover:bg-red-800 focus:outline-none font-medium text-sm px-5 py-2.5 flex items-center'><FontAwesomeIcon className='h-6 mr-2' icon={faYoutube} /> Ver apresentação</button></Link>
+
+                        }
                     </ul>
                     <div className="h-full flex w-full items-end justify-between">
                         {props.repository &&
-                                <Link target='blank' href={`https://github.com/${props.repository.repositoryOwnerName}/${props.repository.repositoryName}/`}><FontAwesomeIcon className="h-10 opacity-90 hover:opacity-100 cursor-pointer" icon={faGithub} /></Link>
+                            <Link target='blank' href={`https://github.com/${props.repository.repositoryOwnerName}/${props.repository.repositoryName}/`}><FontAwesomeIcon className="h-6 opacity-90 hover:opacity-100 cursor-pointer" icon={faGithub} /></Link>
                         }
                         {props.acessLink &&
                             <div className=' mt-8 w-full flex justify-end'>
                                 <Link target='blank' href={props.acessLink}><button className=' dark:bg-blue-300 dark:text-blue-800 dark:hover:bg-blue-400 text-blue-50 bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium text-sm px-5 py-2.5'>Acessar</button></Link>
                             </div>
                         }
+
                         {downloadData &&
                             <details className="  mt-8 md:mt-0 cursor-pointer ">
                                 <summary className=" btn dark:bg-slate-300 dark:text-slate-800 text-slate-100 bg-slate-900 dark:hover:bg-slate-400 hover:bg-slate-950 focus:outline-none font-medium text-sm px-5 py-2.5">Downloads</summary>
