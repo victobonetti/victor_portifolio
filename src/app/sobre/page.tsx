@@ -50,7 +50,6 @@ export default function Sobre() {
                 <p>victorbonettixd@gmail.com</p>
                 <p className="mb-2">+55 (19) 99846-7194</p>
 
-              
             </div>
         </div >
     )

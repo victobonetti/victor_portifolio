@@ -105,7 +105,7 @@ export default async function PortifolioProject(props: portifolioProps) {
                         }
                         {props.acessLink &&
                             <div className=' mt-8 w-full flex justify-end'>
-                                <Link target='blank' href={props.acessLink}><button className=' dark:bg-blue-300 dark:text-blue-800 dark:hover:bg-blue-400 text-blue-50 bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium text-sm px-5 py-2.5'>Acessar</button></Link>
+                                <Link target='blank' href={props.acessLink}><button className=' dark:bg-blue-300 dark:text-blue-950 dark:hover:bg-blue-400 text-blue-50 bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium text-sm px-5 py-2.5'>Acessar</button></Link>
                             </div>
                         }
 

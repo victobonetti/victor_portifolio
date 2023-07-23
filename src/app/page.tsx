@@ -5,7 +5,6 @@ import pr from '../../public/passaregua.png'
 import PortifolioProject from "./(components)/project";
 
 export default function Home() {
-
   return (
     <>
       <PortifolioProject projectImage={pr}
@@ -17,7 +16,7 @@ export default function Home() {
         ]}
         repository={{ repositoryName: `PassaRegua`, repositoryOwnerName: `victobonetti` }}
         haveDownload={true}
-        youtubelink='youtube.com'
+        youtubelink='/yt/J---aiyznGQ'
         />
 
       <PortifolioProject projectImage={bellaPizzaria}
