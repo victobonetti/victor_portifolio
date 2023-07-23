@@ -55,7 +55,7 @@ export default async function PortifolioProject(props: portifolioProps) {
     return (
         <Container>
             <div className=" md:w-11/12 w-full border border-slate-300 dark:border-slate-600 rounded shadow-inner dark:bg-slate-800 bg-slate-100 flex flex-col md:flex-row ">
-                <Image className=" rounded opacity-90 object-cover object-left-top w-full h-48 md:h-96 md:w-1/2 mb-4 md:mb-0" src={props.projectImage} alt="Plano de fundo" />
+                <Image className=" rounded opacity-90 object-cover object-left-top w-full h-full md:w-1/2 mb-4 md:mb-0" src={props.projectImage} alt="Plano de fundo" />
                 <div className=" p-2 flex flex-col md:ml-4 md:w-1/2 w-full text-sm dark:text-slate-300">
                     <div className="flex justify-between ">
                         <div>
@@ -91,32 +91,35 @@ export default async function PortifolioProject(props: portifolioProps) {
                     <p className="pb-4 border-b dark:border-b-slate-600 px-1 mt-4 text-justify">{props.projectResume}</p>
                     <ul className="list-disc pl-5 pt-4">
                         {props.listInfos.map((info, i) => <li key={i} className="list-item mb-2">{info}</li>)}
-                        {
-                            props.youtubelink && 
-                            <Link target='blank' href={props.youtubelink}><button className=' dark:bg-red-500  dark:hover:bg-red-400 text-red-50 bg-red-700 hover:bg-red-800 focus:outline-none font-medium text-sm px-5 py-2.5 flex items-center'><FontAwesomeIcon className='h-6 mr-2' icon={faYoutube} /> Ver apresentação</button></Link>
 
-                        }
                     </ul>
                     <div className="h-full flex w-full items-end justify-between">
                         {props.repository &&
                             <Link target='blank' href={`https://github.com/${props.repository.repositoryOwnerName}/${props.repository.repositoryName}/`}><FontAwesomeIcon className="h-6 opacity-90 hover:opacity-100 cursor-pointer" icon={faGithub} /></Link>
                         }
-                        {props.acessLink &&
-                            <div className=' mt-8 w-full flex justify-end'>
-                                <Link target='blank' href={props.acessLink}><button className=' dark:bg-blue-300 dark:text-blue-950 dark:hover:bg-blue-400 text-blue-50 bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium text-sm px-5 py-2.5'>Acessar</button></Link>
-                            </div>
-                        }
 
-                        {downloadData &&
-                            <details className="  mt-8 md:mt-0 cursor-pointer ">
-                                <summary className=" btn dark:bg-slate-300 dark:text-slate-800 text-slate-100 bg-slate-900 dark:hover:bg-slate-400 hover:bg-slate-950 focus:outline-none font-medium text-sm px-5 py-2.5">Downloads</summary>
-                                <ul className="  bg-slate-50 z-30 shadow rounded-box w-36">
-                                    <Link href={String(downloadData?.windows)}><li className="flex items-center p-1 hover:bg-slate-200"><span><FontAwesomeIcon className="text-slate-600 h-6 mr-2" icon={faDownload} /></span><p className="text-slate-700">Windows</p></li></Link>
-                                    <Link href={String(downloadData?.darwin)}><li className="flex items-center p-1 hover:bg-slate-200"><span><FontAwesomeIcon className="text-slate-600 h-6 mr-2" icon={faDownload} /></span><p className="text-slate-700">MacOs</p>  </li></Link>
-                                    <Link href={String(downloadData?.linux)}><li className="flex items-center p-1 hover:bg-slate-200"><span><FontAwesomeIcon className="text-slate-600 h-6 mr-2" icon={faDownload} /></span><p className="text-slate-700">Linux</p>  </li></Link>
-                                </ul>
-                            </details>
-                        }
+                        <div className=' mt-8 w-fit flex flex-col items-end justify-end'>
+                            {props.acessLink &&
+                                <Link target='blank' href={props.acessLink}><button className=' w-fit mb-2 dark:bg-blue-300 dark:text-blue-950 dark:hover:bg-blue-400 text-blue-50 bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium text-sm px-5 py-2.5'>Acessar</button></Link>
+                            }
+                            {downloadData &&
+                                <details className=" w-fit  mt-8 md:mt-0 cursor-pointer mb-2">
+                                    <summary className=" btn dark:bg-slate-300 dark:text-slate-800 text-slate-100 bg-slate-900 dark:hover:bg-slate-400 hover:bg-slate-950 focus:outline-none font-medium text-sm px-5 py-2.5">Downloads</summary>
+                                    <ul className="  bg-slate-50 z-30 shadow rounded-box ">
+                                        <Link href={String(downloadData?.windows)}><li className="flex items-center p-1 hover:bg-slate-200"><span><FontAwesomeIcon className="text-slate-600 h-6 mr-2" icon={faDownload} /></span><p className="text-slate-700">Windows</p></li></Link>
+                                        <Link href={String(downloadData?.darwin)}><li className="flex items-center p-1 hover:bg-slate-200"><span><FontAwesomeIcon className="text-slate-600 h-6 mr-2" icon={faDownload} /></span><p className="text-slate-700">MacOs</p>  </li></Link>
+                                        <Link href={String(downloadData?.linux)}><li className="flex items-center p-1 hover:bg-slate-200"><span><FontAwesomeIcon className="text-slate-600 h-6 mr-2" icon={faDownload} /></span><p className="text-slate-700">Linux</p>  </li></Link>
+                                    </ul>
+                                </details>
+                            }
+                            {
+                                props.youtubelink &&
+                                <Link href={props.youtubelink}><button className=' w-fit dark:bg-red-500  dark:hover:bg-red-400 text-red-50 bg-red-700 hover:bg-red-800 focus:outline-none font-medium text-sm px-5 py-2.5 flex items-center'><FontAwesomeIcon className='h-6 mr-2' icon={faYoutube} /> Ver apresentação</button></Link>
+                            }
+                        </div>
+
+
+
                     </div>
                 </div>
             </div>

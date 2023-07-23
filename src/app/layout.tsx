@@ -34,7 +34,7 @@ export default function RootLayout({
             /> */}
           </div>
           <div className="h-screen w-screen flex flex-col lg:flex-row">
-            <aside className="border-r dark:border-slate-800 bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 absolute z-50 pb-4 w-screen flex flex-col lg:pl-6 lg:w-52 lg:h-full lg:left-0 justify-between pt-6">
+            <aside className=" border-b lg:border-r dark:border-slate-800 bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 absolute z-50 pb-4 w-screen flex flex-col lg:pl-6 lg:w-52 lg:h-full lg:left-0 justify-between pt-6">
               <div>
                 <span className="flex flex-col w-full items-center lg:items-start select-none">
                   <div className="text-center lg:text-start">
