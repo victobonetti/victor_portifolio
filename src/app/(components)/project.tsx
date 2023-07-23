@@ -2,10 +2,8 @@ import Image, { StaticImageData } from 'next/image';
 import Container from './container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 interface portifolioProps {

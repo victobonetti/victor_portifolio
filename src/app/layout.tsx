@@ -1,10 +1,8 @@
-import Link from 'next/link'
 import './globals.css'
 import { Inter } from 'next/font/google'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 // import { useState } from 'react'
-import { usePathname } from 'next/navigation';
 import PageLink from './(components)/pageLink';
 
 const inter = Inter({ subsets: ['latin'] })
