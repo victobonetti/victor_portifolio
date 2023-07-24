@@ -94,18 +94,20 @@ export default async function PortifolioProject(props: portifolioProps) {
 
                     </ul>
                     <div className="h-full flex w-full items-end justify-between">
-                        {props.repository &&
-                            <Link target='blank' href={`https://github.com/${props.repository.repositoryOwnerName}/${props.repository.repositoryName}/`}><FontAwesomeIcon className="h-6 opacity-90 hover:opacity-100 cursor-pointer" icon={faGithub} /></Link>
-                        }
+                        <div>
+                            {props.repository &&
+                                <Link target='blank' href={`https://github.com/${props.repository.repositoryOwnerName}/${props.repository.repositoryName}/`}><FontAwesomeIcon className="h-8 opacity-90 hover:opacity-100 cursor-pointer" icon={faGithub} /></Link>
+                            }
+                        </div>
 
                         <div className=' mt-8 w-fit flex flex-col items-end justify-end'>
                             {props.acessLink &&
-                                <Link target='blank' href={props.acessLink}><button className=' w-fit mb-2 dark:bg-blue-300 dark:text-blue-950 dark:hover:bg-blue-400 text-blue-50 bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium text-sm px-5 py-2.5'>Acessar</button></Link>
+                                <Link target='blank' href={props.acessLink}><button className=' w-fit mb-2 dark:bg-blue-300 dark:text-blue-950 dark:hover:bg-blue-400 text-blue-50 bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium text-sm px-2.5 py-1.5 rounded'>Acessar</button></Link>
                             }
                             {downloadData &&
                                 <details className=" w-fit  mt-8 md:mt-0 cursor-pointer mb-2">
-                                    <summary className=" btn dark:bg-slate-300 dark:text-slate-800 text-slate-100 bg-slate-900 dark:hover:bg-slate-400 hover:bg-slate-950 focus:outline-none font-medium text-sm px-5 py-2.5">Downloads</summary>
-                                    <ul className="  bg-slate-50 z-30 shadow rounded-box ">
+                                    <summary className=" btn dark:bg-slate-300 dark:text-slate-800 text-slate-100 bg-slate-900 dark:hover:bg-slate-400 hover:bg-slate-950 focus:outline-none font-medium text-sm  px-2.5 py-1.5 rounded">Downloads</summary>
+                                    <ul className="  bg-slate-50 z-30 shadow rounded ">
                                         <Link href={String(downloadData?.windows)}><li className="flex items-center p-1 hover:bg-slate-200"><span><FontAwesomeIcon className="text-slate-600 h-6 mr-2" icon={faDownload} /></span><p className="text-slate-700">Windows</p></li></Link>
                                         <Link href={String(downloadData?.darwin)}><li className="flex items-center p-1 hover:bg-slate-200"><span><FontAwesomeIcon className="text-slate-600 h-6 mr-2" icon={faDownload} /></span><p className="text-slate-700">MacOs</p>  </li></Link>
                                         <Link href={String(downloadData?.linux)}><li className="flex items-center p-1 hover:bg-slate-200"><span><FontAwesomeIcon className="text-slate-600 h-6 mr-2" icon={faDownload} /></span><p className="text-slate-700">Linux</p>  </li></Link>
@@ -114,7 +116,7 @@ export default async function PortifolioProject(props: portifolioProps) {
                             }
                             {
                                 props.youtubelink &&
-                                <Link href={props.youtubelink}><button className=' w-fit dark:bg-red-500  dark:hover:bg-red-400 text-red-50 bg-red-700 hover:bg-red-800 focus:outline-none font-medium text-sm px-5 py-2.5 flex items-center'><FontAwesomeIcon className='h-6 mr-2' icon={faYoutube} /> Ver apresentação</button></Link>
+                                <Link href={props.youtubelink}><button className=' w-fit dark:bg-red-500  dark:hover:bg-red-400 text-red-50 bg-red-700 hover:bg-red-800 focus:outline-none font-medium text-sm  px-2.5 py-1.5 rounded flex items-center'><FontAwesomeIcon className='h-6 mr-2' icon={faYoutube} /> Ver apresentação</button></Link>
                             }
                         </div>
 
