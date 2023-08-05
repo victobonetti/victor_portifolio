@@ -1,13 +1,18 @@
-import Image, { StaticImageData } from 'next/image';
+
+
+import { StaticImageData } from 'next/image';
 import Container from './container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faDownload} from '@fortawesome/free-solid-svg-icons';
+
+
 import Link from 'next/link';
 import axios from 'axios';
+import Carrousel from './carrousel';
 
 interface portifolioProps {
-    projectImage: StaticImageData, //bg
+    projectImage: StaticImageData[], //bg
     projectType: string, //Aplicativo desktop
     projectTitle: string, //FrilaHub
     stackList: string[], //'[rust, typescript, react]'
@@ -54,8 +59,8 @@ export default async function PortifolioProject(props: portifolioProps) {
 
     return (
         <Container>
-            <div className=" md:w-11/12 w-full border border-slate-300 dark:border-slate-600 rounded shadow-inner dark:bg-slate-800 bg-slate-100 flex flex-col md:flex-row ">
-                <Image className=" rounded opacity-90 object-cover object-left-top w-full h-full md:w-1/2 mb-4 md:mb-0" src={props.projectImage} alt="Plano de fundo" />
+            <div className=" md:w-11/12 w-full border border-slate-300 dark:border-slate-600  shadow-inner dark:bg-slate-800 bg-slate-100 flex flex-col md:flex-row ">
+                <Carrousel images={props.projectImage} />
                 <div className=" p-2 flex flex-col md:ml-4 md:w-1/2 w-full text-sm dark:text-slate-300">
                     <div className="flex justify-between ">
                         <div>

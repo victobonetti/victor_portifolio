@@ -1,0 +1,14 @@
+.enterAnimation{
+    animation: enter;
+    animation-duration: .2s;
+
+}
+
+@keyframes enter {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 100%;
+    }
+}

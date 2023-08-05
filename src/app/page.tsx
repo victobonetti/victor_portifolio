@@ -1,5 +1,6 @@
 import bellaPizzaria from '../../public/bellaPizzaria_photo.png'
 import pr from '../../public/passaregua.png'
+import pra from '../../public/passaregua-accounts.png'
 import PortifolioProject from "./(components)/project";
 import portifolioprint from '../../public/print-portifolio.png'
 
@@ -7,7 +8,7 @@ import portifolioprint from '../../public/print-portifolio.png'
 export default function Home() {
   return (
     <>
-      <PortifolioProject projectImage={pr}
+      <PortifolioProject projectImage={[pr, pra]}
         projectType={"Aplicativo desktop"}
         projectTitle={"PassaRégua"}
         stackList={['Rust', 'Typescript', 'React', 'Sqlite']}
@@ -19,7 +20,7 @@ export default function Home() {
         youtubelink='/yt/J---aiyznGQ'
       />
 
-      <PortifolioProject projectImage={bellaPizzaria}
+      <PortifolioProject projectImage={[bellaPizzaria]}
         projectType={"Site"}
         projectTitle={"Site para Pizzaria."}
         stackList={['React']}
@@ -29,7 +30,7 @@ export default function Home() {
         acessLink={`https://www.bellapizzaria.com.br/`} />
 
 
-      <PortifolioProject projectImage={portifolioprint}
+      <PortifolioProject projectImage={[portifolioprint]}
         projectType={"Site"}
         projectTitle={"Este portifólio."}
         stackList={['React']}

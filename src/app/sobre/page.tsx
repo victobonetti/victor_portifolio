@@ -1,13 +1,19 @@
+import Image from "next/image"
+import foto from "../../../public/vit.jpg"
+
 export default function Sobre() {
     return (
         <div className=" dark:text-slate-200 text-slate-900 flex justify-start w-full h-full">
             <div className=" dark:bg-slate-700 bg-slate-100 w-full md:w-1/2  mx-auto p-8">
+                <div className=" w-full flex justify-center">
+                    <Image className=" w-1/2 mb-8 " src={foto} alt={"Foto Currículo"} />
+                </div>
                 <h1 className="text-4xl font-bold mb-4">Víctor Bonetti Pegoraro</h1>
                 <p className="text-lg font-bold mb-2">Programador</p>
                 <p className="mb-6">Gestor de restaurante em transição de carreira para a área de tecnologia, com experiência em informática, suporte, sistemas ERP e criação de soluções personalizadas como freelancer.</p>
 
                 <h2 className="text-2xl font-bold mb-2">EXPERIÊNCIA</h2>
-                  <div className="mb-4">
+                <div className="mb-4">
                     <p className="font-bold">Desenvolvedor freelancer</p>
                     <p className="dark:text-slate-300 text-slate-600 italic">Abr. 2022 - atualmente</p>
                 </div>
@@ -28,7 +34,7 @@ export default function Sobre() {
                 </div>
                 <div className="mb-6">
                     <p className="font-bold">Auxiliar de escritório (Jovem aprendiz)</p>
-                    <p>Delta Plus Brasil</p>
+                    <p>Corporação de guias mirins</p>
                     <p className="dark:text-slate-300 text-slate-600 italic">jul. 2018 - mar. 2019</p>
                 </div>
 
