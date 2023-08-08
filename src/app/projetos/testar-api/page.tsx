@@ -4,8 +4,6 @@ import { useRouter } from 'next/router';
 
 export default function TesteApi() {
 
-    const router = useRouter();
-
     return (
         <div className=' flex flex-col p-2 lg:p-8'>
             <div className=' w-full flex flex-col border-b mb-8 pb-4'>
