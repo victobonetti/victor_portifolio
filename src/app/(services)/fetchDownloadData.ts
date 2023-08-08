@@ -10,13 +10,12 @@ export default async function fetchDownloadData(repository: gitHubProps) {
         try {
             if (repository) {
                 console.log("Fetching data...")
-                let data = await axios.get(`https://victor-portifolio.vercel.app/api/${repository.repositoryOwnerName}/${repository.repositoryName}/`);
-                console.log(data);
+                let data = await axios.get(`/api/${repository.repositoryOwnerName}/${repository.repositoryName}/`);
                 return data.data;
             }
         } catch (e) {
             console.error("Error fetching data.")
-            console.error(e)
+            // console.error(e)
             return undefined;
         }
     }
