@@ -15,7 +15,7 @@ export default async function fetchDownloadData(repository: gitHubProps) {
             }
         } catch (e) {
             console.error("Error fetching data.")
-            // console.error(e)
+            console.error(e)
             return undefined;
         }
     }
