@@ -4,12 +4,14 @@ import { StaticImageData } from 'next/image';
 import Container from './container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import { faDownload} from '@fortawesome/free-solid-svg-icons';
-
-
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import axios from 'axios';
 import Carrousel from './carrousel';
+import DownloadButton from './DownloadButton';
+import { gitHubProps } from '../(interfaces)/gitHubProps';
+import fetchDownloadData from '../(services)/fetchDownloadData';
+import { standardDownloadResponseProps } from '../(interfaces)/standardDownloadResponseProps';
 
 interface portifolioProps {
     projectImage: StaticImageData[], //bg
@@ -24,59 +26,30 @@ interface portifolioProps {
     youtubelink?: string
 }
 
-interface gitHubProps {
-    repositoryName: string,
-    repositoryOwnerName: string,
-}
-
-interface standardDownloadResponseProps {
-    version: string,
-    windows: string,
-    linux: string,
-    darwin: string
-}
-
-
 export default async function PortifolioProject(props: portifolioProps) {
 
-    const fetch = async () => {
-        // const URL = `${window.location.protocol}//${window.location.host}`
-        try {
-            if (props.haveDownload && props.repository) {
-                console.log("Fetching data...")
-                let data = await axios.get(`https://victor-portifolio.vercel.app/api/${props.repository.repositoryOwnerName}/${props.repository.repositoryName}/`);
-                console.log(data);
-                return data.data
-            }
-        } catch (e) {
-            console.error("Error fetching data.")
-            return undefined;
-        }
-
+    let downloadData: standardDownloadResponseProps | undefined;
+    if (props.haveDownload && props.repository) {
+        downloadData = await fetchDownloadData(props.repository)
     }
-
-    let downloadData: standardDownloadResponseProps = await fetch();
 
     return (
         <Container>
             <div className=" md:w-11/12 w-full border border-slate-300 dark:border-slate-600  shadow-inner dark:bg-slate-800 bg-slate-100 flex flex-col md:flex-row ">
                 <Carrousel images={props.projectImage} />
-                <div className=" p-2 flex flex-col md:ml-4 md:w-1/2 w-full text-sm dark:text-slate-300">
+                <div className=" p-2 flex flex-col md:ml-4 md:w-5/12 w-full text-sm dark:text-slate-300">
                     <div className="flex justify-between ">
                         <div>
                             <p className="ml-0.5 text-sm dark:text-slate-400 text-slate-500">{props.projectType}</p>
                             <h3 className="font-semibold text-4xl">{props.projectTitle}</h3>
                         </div>
-                        {downloadData?.version.length > 1 &&
+                        {downloadData && downloadData.version.length > 1 &&
                             <p className="h-fit px-2 py-1 dark:bg-slate-200 dark:text-slate-700 bg-slate-600 text-slate-100 rounded-xl text-sm">{downloadData?.version}</p>
                         }
                     </div>
-
                     <p className="px-1 text-justify dark:text-slate-400 text-slate-500">Elaborado com&nbsp;
                         {props.stackList.map((stack, i) => {
-
                             let text: string;
-
                             if (i == props.stackList.length - 1) {
                                 text = `${stack}.`
                             } else if (i == props.stackList.length - 2) {
@@ -84,12 +57,9 @@ export default async function PortifolioProject(props: portifolioProps) {
                             } else {
                                 text = `${stack}, `
                             }
-
                             return (
                                 < span key={i} className="font-semibold" >{text}</span>
                             )
-
-
                         })}
                     </p>
 
@@ -109,15 +79,9 @@ export default async function PortifolioProject(props: portifolioProps) {
                             {props.acessLink &&
                                 <Link target='blank' href={props.acessLink}><button className=' w-fit mb-2 dark:bg-blue-300 dark:text-blue-950 dark:hover:bg-blue-400 text-blue-50 bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium text-sm px-2.5 py-1.5 rounded'>Acessar</button></Link>
                             }
-                            {downloadData &&
-                                <details className=" w-fit  mt-8 md:mt-0 cursor-pointer mb-2">
-                                    <summary className=" btn dark:bg-slate-300 dark:text-slate-800 text-slate-100 bg-slate-900 dark:hover:bg-slate-400 hover:bg-slate-950 focus:outline-none font-medium text-sm  px-2.5 py-1.5 rounded">Downloads</summary>
-                                    <ul className="  bg-slate-50 z-30 shadow rounded ">
-                                        <Link href={String(downloadData?.windows)}><li className="flex items-center p-1 hover:bg-slate-200"><span><FontAwesomeIcon className="text-slate-600 h-6 mr-2" icon={faDownload} /></span><p className="text-slate-700">Windows</p></li></Link>
-                                        <Link href={String(downloadData?.darwin)}><li className="flex items-center p-1 hover:bg-slate-200"><span><FontAwesomeIcon className="text-slate-600 h-6 mr-2" icon={faDownload} /></span><p className="text-slate-700">MacOs</p>  </li></Link>
-                                        <Link href={String(downloadData?.linux)}><li className="flex items-center p-1 hover:bg-slate-200"><span><FontAwesomeIcon className="text-slate-600 h-6 mr-2" icon={faDownload} /></span><p className="text-slate-700">Linux</p>  </li></Link>
-                                    </ul>
-                                </details>
+                            {
+                                downloadData &&
+                                < DownloadButton downloadData={downloadData} />
                             }
                             {
                                 props.youtubelink &&
