@@ -15,7 +15,7 @@ export default function Projetos() {
         projectResume={"Aplicativo para gestão de contas fiado."}
         listInfos={['Operações CRUD: Cadastre produtos e pessoas, abra contas fiado e faça pagamentos para reduzir saldos pendentes.', 'Conexão ao banco de dados, pool de conexões.', 'Download de atualizações de forma automática através de requisição de uma API pelo próprio software.'
         ]}
-        repository={{ repositoryName: `PassaRegua`, repositoryOwnerName: `victobonetti` }}
+        repository={{ repositoryName: `passaregua`, repositoryOwnerName: `victobonetti` }}
         haveDownload={true}
         youtubelink='/yt/5vQkc2AwkOk'
       />

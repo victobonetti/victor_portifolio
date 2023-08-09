@@ -4,26 +4,19 @@ import { gitHubProps } from "../(interfaces)/gitHubProps";
 
 
 
-export default async function fetchDownloadData(repository: gitHubProps) {
-
-    const fetch = async (): Promise<standardDownloadResponseProps | undefined> => {
+export default async function fetchDownloadData(repository: gitHubProps) : Promise<standardDownloadResponseProps | undefined> {
         try {
+            console.log("Fetch!")
             if (repository) {
                 console.log("Fetching data...")
-                let data = await axios.get(`/api/${repository.repositoryOwnerName}/${repository.repositoryName}/`);
+                let data = await axios.get(`https://victor-portifolio.vercel.app/api/${repository.repositoryOwnerName}/${repository.repositoryName}/`);
                 return data.data;
             }
-        } catch (e) {
+        }
+         catch (e) {
             console.error("Error fetching data.")
-            console.error(e)
+            // console.error(e)
             return undefined;
         }
-    }
-
-    let data: standardDownloadResponseProps | undefined = await fetch();
-
-    if (data) {
-        return data
-    }
 
 }
