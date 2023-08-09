@@ -1,5 +1,6 @@
 'use client'
 
+import PageLink from '@/app/(components)/pageLink';
 import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -74,14 +75,16 @@ export default function TesteApi() {
                     !response && !loading &&
                     <p className=' mt-2 border rounded p-2 font-semibold'>Clique em um dos links para fazer requisição para a API.</p>
                 }
-                
+
                 {
-                    loading && 
+                    loading &&
                     <p className=' select-none animate-pulse text-blue-500 mt-2 border rounded p-2 font-semibold text-center'>Carregando...</p>
                 }
 
 
             </div>
+            <PageLink to={"/"} content={"Retornar"} />
+
         </div>
     );
 };
