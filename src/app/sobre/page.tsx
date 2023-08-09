@@ -1,10 +1,18 @@
 import Image from "next/image"
 import foto from "../../../public/vit.jpg"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileDownload } from '@fortawesome/free-solid-svg-icons';
 
 export default function Sobre() {
     return (
         <div className=" dark:text-slate-200 text-slate-900 flex justify-start w-full h-full">
-            <div className=" dark:bg-slate-700 bg-slate-100 w-full md:w-1/2  mx-auto p-8">
+            <div className=" fixed bottom-4 right-8 ">
+                <a className="flex border rounded p-2 bg-slate-100 hover:text-blue-500 transition-all dark:bg-slate-700 shadow flex-col items-center" href="../../../public/VíctorBonettiPegoraro.pdf" download>
+                    <FontAwesomeIcon className=" cursor-pointer w-6 mb-2" icon={faFileDownload} />
+                    <p className=" text-xs font-bold">Currículo pdf</p>
+                </a>
+            </div>
+            <div className=" shadow-inner dark:bg-slate-700 bg-slate-100 w-full md:w-1/2  mx-auto p-8">
                 <div className=" w-full flex justify-center">
                     <Image className=" w-1/2 mb-8 " src={foto} alt={"Foto Currículo"} />
                 </div>
