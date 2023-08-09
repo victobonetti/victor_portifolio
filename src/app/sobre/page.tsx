@@ -7,7 +7,7 @@ export default function Sobre() {
     return (
         <div className=" dark:text-slate-200 text-slate-900 flex justify-start w-full h-full">
             <div className=" fixed bottom-4 right-8 ">
-                <a className="flex border rounded p-2 bg-slate-100 hover:text-blue-500 transition-all dark:bg-slate-700 shadow flex-col items-center" href="../../../public/VíctorBonettiPegoraro.pdf" download>
+                <a className="flex border rounded p-2 bg-slate-100 hover:text-blue-500 transition-all dark:bg-slate-700 shadow flex-col items-center" href="/VictorBonettiPegoraro.pdf" download>
                     <FontAwesomeIcon className=" cursor-pointer w-6 mb-2" icon={faFileDownload} />
                     <p className=" text-xs font-bold">Currículo pdf</p>
                 </a>
